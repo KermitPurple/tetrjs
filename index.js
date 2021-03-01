@@ -1,7 +1,5 @@
+const BOARD_SIZE = {x: 10, y: 20};
 const cells = document.querySelectorAll('.cell');
-let grid = []
-for(let i = 0; i < 20; i++){
-    grid.push([]);
-    for(let j = 0; j < 10; j++)
-        grid[i][j] = cells[i * 10 + j];
+function get_cell_at(x, y){
+    return cells[y * BOARD_SIZE.x + x];
 }
