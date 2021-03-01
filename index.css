@@ -1,3 +1,13 @@
+:root{
+    --I-color: #01f1ed;
+    --O-color: #f0f100;
+    --L-color: #f0a001;
+    --J-color: #0000f0;
+    --S-color: #01f000;
+    --Z-color: #f00001;
+    --T-color: #9f00f0;
+}
+
 html, body{
     margin: 0;
     padding: 0;
@@ -23,4 +33,32 @@ body{
     background: #333;
     border: 1px solid #111;
     display: block;
+}
+
+.I{
+    background: var(--I-color);
+}
+
+.O{
+    background: var(--O-color);
+}
+
+.L{
+    background: var(--L-color);
+}
+
+.J{
+    background: var(--J-color);
+}
+
+.S{
+    background: var(--S-color);
+}
+
+.Z{
+    background: var(--Z-color);
+}
+
+.T{
+    background: var(--T-color);
 }
