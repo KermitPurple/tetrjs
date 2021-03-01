@@ -17,7 +17,7 @@ body{
     grid-template-columns: repeat(10, auto);
     grid-template-rows: repeat(20, auto);
 }
-.item{
+.cell{
     background: #333;
     border: 1px solid #111;
     display: block;
