@@ -1,3 +1,9 @@
+class Piece{
+    constructor(matrix){
+        this.matrix = matrix;
+    }
+}
+
 const CellType = {
     None: '',
     I: 'I',
@@ -9,7 +15,7 @@ const CellType = {
     T: 'T',
 };
 
-const PIECES = [
+const PIECE_MATRICIES = [
     [
         [CellType.None, CellType.I, CellType.None, CellType.None],
         [CellType.None, CellType.I, CellType.None, CellType.None],
