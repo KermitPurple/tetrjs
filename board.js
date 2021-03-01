@@ -1,4 +1,10 @@
-const BOARD_SIZE = {x: 10, y: 20};
+class Coord{
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+    }
+}
+const BOARD_SIZE = new Coord(10, 20);
 const cells = document.querySelectorAll('.cell');
 
 /*
