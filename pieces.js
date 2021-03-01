@@ -1,6 +1,7 @@
 class Piece{
     constructor(matrix){
         this.matrix = matrix;
+        this.pos = new Coord(BOARD_SIZE.x / 2, 0);
     }
 }
 
