@@ -47,8 +47,11 @@ class Piece{
     draw(){
         for(let i = 0; i < this.matrix.length; i++)
             for(let j = 0; j < this.matrix[i].length; j++)
-                if(this.matrix[i][j] != CellType.None)
-                    get_cell_at(j + this.pos.x, i + this.pos.y).classList.add(this.matrix[i][j]);
+                if(this.matrix[i][j] != CellType.None){
+                    let cell = get_cell_at(j + this.pos.x, i + this.pos.y);
+                    clear_cell(cell);
+                    cell.classList.add(this.matrix[i][j]);
+                }
     };
 }
 
@@ -100,3 +103,13 @@ const PIECES = [
         [CellType.None, CellType.Z, CellType.None],
     ]),
 ];
+
+function clear_cell(cell){
+    for(let key in CellType)
+        if(key != 'None')
+            cell.classList.remove(CellType[key]);
+}
+
+function clear_cell_at(x, y){
+    clear_cell(get_cell_at(x, y));
+}
