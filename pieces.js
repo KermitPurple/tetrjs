@@ -6,6 +6,44 @@ class Piece{
     clone(){
         return clone(this);
     }
+    /*
+     * +--+--+--+     +--+--+--+
+     * |00|01|02|     |20|10|00|
+     * +--+--+--+     +--+--+--+
+     * |10|11|12| --> |21|11|01|
+     * +--+--+--+     +--+--+--+
+     * |20|21|22|     |22|12|02|
+     * +--+--+--+     +--+--+--+
+     */
+    get_rotate_right(matrix = undefined){
+        matrix = matrix ?? this.matrix;
+        let result = clone(matrix);
+        for(let i = 0; i < matrix.length; i++){
+            for(let j = 0; j < matrix[i].length; j++){
+                result[i][j] = matrix[matrix.length - 1 - j][i];
+            }
+        }
+        return result;
+    }
+    /*
+     * +--+--+--+     +--+--+--+
+     * |00|01|02|     |02|12|22|
+     * +--+--+--+     +--+--+--+
+     * |10|11|12| --> |01|11|21|
+     * +--+--+--+     +--+--+--+
+     * |20|21|22|     |00|10|20|
+     * +--+--+--+     +--+--+--+
+     */
+    get_rotate_left(matrix = undefined){
+        matrix = matrix ?? this.matrix;
+        let result = clone(matrix);
+        for(let i = 0; i < matrix.length; i++){
+            for(let j = 0; j < matrix[i].length; j++){
+                result[i][j] = matrix[j][matrix[j].length - 1 - i];
+            }
+        }
+        return result;
+    }
 }
 
 const CellType = {
