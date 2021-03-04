@@ -1,7 +1,7 @@
 class Piece{
     constructor(matrix){
         this.matrix = matrix;
-        this.pos = new Coord(BOARD_SIZE.x / 2, 0);
+        this.pos = new Coord(Math.floor(BOARD_SIZE.x / 2 - matrix[0].length / 2), 0);
     }
     clone(){
         return clone(this);
@@ -47,7 +47,8 @@ class Piece{
     draw(){
         for(let i = 0; i < this.matrix.length; i++)
             for(let j = 0; j < this.matrix[i].length; j++)
-                get_cell_at(j + this.pos.x, i + this.pos.y).classList.add(CellType.I);
+                if(this.matrix[i][j] != CellType.None)
+                    get_cell_at(j + this.pos.x, i + this.pos.y).classList.add(this.matrix[i][j]);
     };
 }
 
