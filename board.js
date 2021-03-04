@@ -4,7 +4,7 @@ class Coord{
         this.y = y;
     }
     clone(){
-        return JSON.parse(JSON.stringify(this));
+        return clone(this);
     }
 }
 const BOARD_SIZE = new Coord(10, 20);
@@ -17,4 +17,8 @@ const cells = document.querySelectorAll('.cell');
  */
 function get_cell_at(x, y){
     return cells[y * BOARD_SIZE.x + x];
+}
+
+function clone(object){
+    return JSON.parse(JSON.stringify(object));
 }

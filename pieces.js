@@ -4,7 +4,7 @@ class Piece{
         this.pos = new Coord(BOARD_SIZE.x / 2, 0);
     }
     clone(){
-        return JSON.parse(JSON.stringify(this));
+        return clone(this);
     }
 }
 
