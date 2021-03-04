@@ -3,6 +3,9 @@ class Coord{
         this.x = x;
         this.y = y;
     }
+    clone(){
+        return JSON.parse(JSON.stringify(this));
+    }
 }
 const BOARD_SIZE = new Coord(10, 20);
 const cells = document.querySelectorAll('.cell');
