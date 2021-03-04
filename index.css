@@ -9,31 +9,31 @@
 }
 
 .I{
-    background: var(--I-color);
+    background: var(--I-color) !important;
 }
 
 .O{
-    background: var(--O-color);
+    background: var(--O-color) !important;
 }
 
 .L{
-    background: var(--L-color);
+    background: var(--L-color) !important;
 }
 
 .J{
-    background: var(--J-color);
+    background: var(--J-color) !important;
 }
 
 .S{
-    background: var(--S-color);
+    background: var(--S-color) !important;
 }
 
 .Z{
-    background: var(--Z-color);
+    background: var(--Z-color) !important;
 }
 
 .T{
-    background: var(--T-color);
+    background: var(--T-color) !important;
 }
 
 html, body{
