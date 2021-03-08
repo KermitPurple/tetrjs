@@ -108,7 +108,7 @@ const PIECES = [
     ]),
 ];
 
-function get_random_peice(){
+function get_random_piece(){
     return PIECES[Math.floor(Math.random() * PIECES.length)].clone();
 }
 

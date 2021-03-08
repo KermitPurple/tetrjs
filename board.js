@@ -20,5 +20,7 @@ function get_cell_at(x, y){
 }
 
 function clone(object){
+    if(Array.isArray(object))//fixes bug with cloning arrays
+        return JSON.parse(JSON.stringify(object));
     return Object.assign(Object.create(Object.getPrototypeOf(object)), JSON.parse(JSON.stringify(object)));
 }
