@@ -82,6 +82,10 @@ class Piece{
         this.pos.y -= y;
         return false;
     }
+    hard_drop(){
+        while(this.move_rel(0, 1));
+        this.lock();
+    }
 }
 
 const CellType = {

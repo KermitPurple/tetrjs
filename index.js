@@ -2,7 +2,7 @@ document.addEventListener('keydown', event=>{
     piece.erase()
     switch(event.key.toLowerCase()){
         case 'w':
-            piece.move_rel(0, -1);
+            piece.hard_drop();
             break;
         case 'a':
             piece.move_rel(-1, 0);
@@ -19,11 +19,6 @@ document.addEventListener('keydown', event=>{
         case 'e':
             piece.matrix = piece.get_rotate_right();
             break
-        case 'l':
-            piece.lock();
-            piece.draw();
-            piece = get_random_piece();
-            break;
         default:
             break;
     }
