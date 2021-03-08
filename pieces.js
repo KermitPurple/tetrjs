@@ -108,6 +108,10 @@ const PIECES = [
     ]),
 ];
 
+function get_random_peice(){
+    return PIECES[Math.floor(Math.random() * PIECES.length)].clone();
+}
+
 function clear_cell(cell){
     for(let key in CellType)
         if(key != 'None')
@@ -116,4 +120,15 @@ function clear_cell(cell){
 
 function clear_cell_at(x, y){
     clear_cell(get_cell_at(x, y));
+}
+
+function cell_empty(cell){
+    for(const key in CellType)
+        if(cell.classList.contains(CellType[key]))
+            return false;
+    return true;
+}
+
+function cell_empty_at(x, y){
+    return cell_empty(get_cell_at(x, y));
 }

@@ -20,5 +20,5 @@ function get_cell_at(x, y){
 }
 
 function clone(object){
-    return JSON.parse(JSON.stringify(object));
+    return Object.assign(Object.create(Object.getPrototypeOf(object)), JSON.parse(JSON.stringify(object)));
 }
