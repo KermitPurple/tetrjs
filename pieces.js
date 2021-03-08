@@ -61,6 +61,13 @@ class Piece{
     lock(){
         this.placed = true;
     }
+    cells_empty(){
+        for(let i = 0; i < this.matrix.length; i++)
+            for(let j = 0; j < this.matrix[i].length; j++)
+                if(this.matrix[i][j] != CellType.None && !cell_empty_at(j + this.pos.x, i + this.pos.y))
+                    return false;
+        return true;
+    }
 }
 
 const CellType = {
