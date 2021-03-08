@@ -19,6 +19,9 @@ document.addEventListener('keydown', event=>{
         case 'e':
             piece.matrix = piece.get_rotate_right();
             break
+        case 'l':
+            piece.lock();
+            break;
         default:
             break;
     }
@@ -28,9 +31,11 @@ document.addEventListener('keydown', event=>{
 let piece = get_random_piece();
 
 const _INTERVAL = setInterval(()=>{
-    piece.erase()
+    if(piece.placed)
+        piece = get_random_piece();
+    // piece.erase()
     // piece.pos.y += 1;
-    if(piece.pos.y + 4 >= BOARD_SIZE.y)
-        clearInterval(_INTERVAL);
-    piece.draw();
+    // if(piece.pos.y + 4 >= BOARD_SIZE.y)
+    //     clearInterval(_INTERVAL);
+    // piece.draw();
 }, 250);
