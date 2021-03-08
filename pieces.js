@@ -45,12 +45,14 @@ class Piece{
         }
         return result;
     }
-    draw(erase = false){
+    draw(erase = false, shadow = false){
         for(let i = 0; i < this.matrix.length; i++)
             for(let j = 0; j < this.matrix[i].length; j++)
                 if(this.matrix[i][j] != CellType.None){
                     let cell = get_cell_at(j + this.pos.x, i + this.pos.y);
                     clear_cell(cell);
+                    if(shadow)
+                        cell.classList.add('shadow');
                     if(!erase)
                         cell.classList.add(this.matrix[i][j]);
                 }
@@ -85,6 +87,16 @@ class Piece{
     hard_drop(){
         while(this.move_rel(0, 1));
         this.lock();
+    }
+    draw_shadow(){
+        let shadow = this.clone();
+        shadow.hard_drop();
+        shadow.draw(false, true);
+    }
+    erase_shadow(){
+        let shadow = this.clone();
+        shadow.hard_drop();
+        shadow.draw(true);
     }
 }
 
@@ -145,6 +157,7 @@ function clear_cell(cell){
     for(let key in CellType)
         if(key != 'None')
             cell.classList.remove(CellType[key]);
+    cell.classList.remove('shadow');
 }
 
 function clear_cell_at(x, y){
@@ -152,6 +165,8 @@ function clear_cell_at(x, y){
 }
 
 function cell_empty(cell){
+    if(cell.classList.contains('shadow'))
+        return true;
     for(const key in CellType)
         if(cell.classList.contains(CellType[key]))
             return false;

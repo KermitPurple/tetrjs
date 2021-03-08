@@ -1,5 +1,6 @@
 document.addEventListener('keydown', event=>{
     piece.erase()
+    piece.erase_shadow();
     switch(event.key.toLowerCase()){
         case 'w':
             piece.hard_drop();
@@ -22,6 +23,7 @@ document.addEventListener('keydown', event=>{
         default:
             break;
     }
+    piece.draw_shadow();
     piece.draw();
 });
 
@@ -31,7 +33,9 @@ const _INTERVAL = setInterval(()=>{
     if(piece.placed)
         piece = get_random_piece();
     piece.erase()
+    piece.erase_shadow();
     if(!piece.move_rel(0, 1))
         piece.lock();
+    piece.draw_shadow();
     piece.draw();
 }, 250);
