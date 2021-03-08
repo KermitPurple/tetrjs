@@ -2,16 +2,16 @@ document.addEventListener('keydown', event=>{
     piece.erase()
     switch(event.key.toLowerCase()){
         case 'w':
-            piece.pos.y -= 1;
+            piece.move_rel(0, -1);
             break;
         case 'a':
-            piece.pos.x -= 1;
+            piece.move_rel(-1, 0);
             break;
         case 's':
-            piece.pos.y += 1;
+            piece.move_rel(0, 1);
             break;
         case 'd':
-            piece.pos.x += 1;
+            piece.move_rel(1, 0);
             break;
         case 'q':
             piece.matrix = piece.get_rotate_left();
@@ -21,6 +21,8 @@ document.addEventListener('keydown', event=>{
             break
         case 'l':
             piece.lock();
+            piece.draw();
+            piece = get_random_piece();
             break;
         default:
             break;
@@ -33,9 +35,8 @@ let piece = get_random_piece();
 const _INTERVAL = setInterval(()=>{
     if(piece.placed)
         piece = get_random_piece();
-    // piece.erase()
-    // piece.pos.y += 1;
-    // if(piece.pos.y + 4 >= BOARD_SIZE.y)
-    //     clearInterval(_INTERVAL);
-    // piece.draw();
+    piece.erase()
+    if(!piece.move_rel(0, 1))
+        piece.lock();
+    piece.draw();
 }, 250);

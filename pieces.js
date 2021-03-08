@@ -64,9 +64,23 @@ class Piece{
     cells_empty(){
         for(let i = 0; i < this.matrix.length; i++)
             for(let j = 0; j < this.matrix[i].length; j++)
-                if(this.matrix[i][j] != CellType.None && !cell_empty_at(j + this.pos.x, i + this.pos.y))
+                if(this.matrix[i][j] != CellType.None &&
+                    (j + this.pos.x < 0 ||
+                    i + this.pos.y < 0 ||
+                    j + this.pos.x >= BOARD_SIZE.x ||
+                    i + this.pos.y >= BOARD_SIZE.y ||
+                    !cell_empty_at(j + this.pos.x, i + this.pos.y)))
                     return false;
         return true;
+    }
+    move_rel(x, y){
+        this.pos.x += x;
+        this.pos.y += y;
+        if(this.cells_empty())
+            return true;
+        this.pos.x -= x;
+        this.pos.y -= y;
+        return false;
     }
 }
 
