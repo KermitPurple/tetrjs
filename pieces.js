@@ -45,6 +45,22 @@ class Piece{
         }
         return result;
     }
+    rotate_right(){
+        let prev_matrix = this.matrix;
+        this.matrix = this.get_rotate_right();
+        if(this.cells_empty())
+            return true;
+        this.matrix = prev_matrix;
+        return false;
+    }
+    rotate_left(){
+        let prev_matrix = this.matrix;
+        this.matrix = this.get_rotate_left();
+        if(this.cells_empty())
+            return true;
+        this.matrix = prev_matrix;
+        return false;
+    }
     draw(erase = false, shadow = false){
         for(let i = 0; i < this.matrix.length; i++)
             for(let j = 0; j < this.matrix[i].length; j++)

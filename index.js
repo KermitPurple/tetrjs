@@ -15,10 +15,10 @@ document.addEventListener('keydown', event=>{
             piece.move_rel(1, 0);
             break;
         case 'q':
-            piece.matrix = piece.get_rotate_left();
+            piece.rotate_left();
             break;
         case 'e':
-            piece.matrix = piece.get_rotate_right();
+            piece.rotate_right();
             break
         default:
             break;
