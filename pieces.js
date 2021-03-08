@@ -44,15 +44,19 @@ class Piece{
         }
         return result;
     }
-    draw(){
+    draw(erase = false){
         for(let i = 0; i < this.matrix.length; i++)
             for(let j = 0; j < this.matrix[i].length; j++)
                 if(this.matrix[i][j] != CellType.None){
                     let cell = get_cell_at(j + this.pos.x, i + this.pos.y);
                     clear_cell(cell);
-                    cell.classList.add(this.matrix[i][j]);
+                    if(!erase)
+                        cell.classList.add(this.matrix[i][j]);
                 }
-    };
+    }
+    erase(){
+        this.draw(true);
+    }
 }
 
 const CellType = {
