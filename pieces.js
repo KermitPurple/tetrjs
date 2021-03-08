@@ -2,6 +2,7 @@ class Piece{
     constructor(matrix){
         this.matrix = matrix;
         this.pos = new Coord(Math.floor(BOARD_SIZE.x / 2 - matrix[0].length / 2), 0);
+        this.placed = false;
     }
     clone(){
         return clone(this);
@@ -56,6 +57,9 @@ class Piece{
     }
     erase(){
         this.draw(true);
+    }
+    lock(){
+        this.placed = true;
     }
 }
 

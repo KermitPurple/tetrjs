@@ -1,5 +1,4 @@
 document.addEventListener('keydown', event=>{
-    console.log(event);
     piece.erase()
     switch(event.key.toLowerCase()){
         case 'w':
@@ -15,9 +14,7 @@ document.addEventListener('keydown', event=>{
             piece.pos.x += 1;
             break;
         case 'q':
-            console.log(piece.matrix);
             piece.matrix = piece.get_rotate_left();
-            console.log(piece.matrix);
             break;
         case 'e':
             piece.matrix = piece.get_rotate_right();
