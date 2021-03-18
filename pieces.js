@@ -1,3 +1,4 @@
+// TODO: change get rotate to just rotate and use a decorator for peice protection
 class Piece{
     constructor(matrix){
         this.matrix = matrix;
