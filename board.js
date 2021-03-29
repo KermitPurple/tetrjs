@@ -10,6 +10,7 @@ class Coord{
 const BOARD_SIZE = new Coord(10, 20);
 const cells = document.querySelectorAll('.cell');
 
+
 /*
  * Return a cell in cells with the given coordinates
  * @param {integer} x - x coordinate of the cell that is returned

@@ -20,6 +20,8 @@ document.addEventListener('keydown', event=>{
         case 'e':
             piece.rotate_right();
             break
+        case 'p':
+            paused = !paused;
         default:
             break;
     }
@@ -28,8 +30,10 @@ document.addEventListener('keydown', event=>{
 });
 
 let piece = get_random_piece();
+let paused = false;
 
 const _INTERVAL = setInterval(()=>{
+    if(paused) return;
     if(piece.placed)
         piece = get_random_piece();
     piece.erase()

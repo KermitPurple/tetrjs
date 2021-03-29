@@ -1,5 +1,6 @@
 // TODO: change get rotate to just rotate and use a decorator for peice protection
 // TODO: do this for placed protection as well
+// TODO: store board data in a matrix instead of just dom
 class Piece{
     constructor(matrix){
         this.matrix = matrix;
@@ -82,6 +83,11 @@ class Piece{
     }
     lock(){
         this.placed = true;
+        for(let i = 0; i < this.matrix[0].length; i++)
+            for(let j = 0; j < this.matrix.length; j++){
+                if(this.matrix[i][j] != CellType.None)
+                    board[this.pos.y + i][this.pos.x + j] = this.matrix[i][j];
+            }
     }
     cells_empty(){
         for(let i = 0; i < this.matrix.length; i++)
@@ -108,7 +114,6 @@ class Piece{
     hard_drop(){
         if(this.placed) return;
         while(this.move_rel(0, 1));
-        this.lock();
     }
     draw_shadow(){
         let shadow = this.clone();
@@ -132,6 +137,15 @@ const CellType = {
     Z: 'Z',
     T: 'T',
 };
+
+const board = [];
+for(let i = 0; i < BOARD_SIZE.y; i++){
+    let temp = []
+    for(let j = 0; j < BOARD_SIZE.x; j++){
+        temp.push(CellType.None);
+    }
+    board.push(temp);
+}
 
 const PIECES = [
     new Piece([
@@ -197,4 +211,15 @@ function cell_empty(cell){
 
 function cell_empty_at(x, y){
     return cell_empty(get_cell_at(x, y));
+}
+
+function draw_board(){
+    for(let i = 0; i < BOARD_SIZE.y; i++){
+        for(let j = 0; j < BOARD_SIZE.x; j++){
+            let cell = get_cell_at(j, i);
+            clear_cell(cell);
+            if(board[i][j] != CellType.None)
+                cell.classList.add(board[i][j]);
+        }
+    }
 }
