@@ -36,10 +36,9 @@ const _INTERVAL = setInterval(()=>{
     if(paused) return;
     if(piece.placed)
         piece = get_random_piece();
-    piece.erase()
-    piece.erase_shadow();
     if(!piece.move_rel(0, 1))
         piece.lock();
+    draw_board();
     piece.draw_shadow();
     piece.draw();
 }, 250);

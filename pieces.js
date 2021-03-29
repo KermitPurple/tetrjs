@@ -97,7 +97,7 @@ class Piece{
                     i + this.pos.y < 0 ||
                     j + this.pos.x >= BOARD_SIZE.x ||
                     i + this.pos.y >= BOARD_SIZE.y ||
-                    !cell_empty_at(j + this.pos.x, i + this.pos.y)))
+                    board[this.pos.y + i][this.pos.x + j] != CellType.None))
                     return false;
         return true;
     }
@@ -111,18 +111,20 @@ class Piece{
         this.pos.y -= y;
         return false;
     }
-    hard_drop(){
+    hard_drop(shadow = false){
         if(this.placed) return;
         while(this.move_rel(0, 1));
+        if(!shadow)
+            this.lock();
     }
     draw_shadow(){
         let shadow = this.clone();
-        shadow.hard_drop();
+        shadow.hard_drop(true);
         shadow.draw(false, true);
     }
     erase_shadow(){
         let shadow = this.clone();
-        shadow.hard_drop();
+        shadow.hard_drop(true);
         shadow.draw(true);
     }
 }
