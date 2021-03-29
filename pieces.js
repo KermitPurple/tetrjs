@@ -1,4 +1,5 @@
 // TODO: change get rotate to just rotate and use a decorator for peice protection
+// TODO: do this for placed protection as well
 class Piece{
     constructor(matrix){
         this.matrix = matrix;
@@ -47,6 +48,7 @@ class Piece{
         return result;
     }
     rotate_right(){
+        if(this.placed) return;
         let prev_matrix = this.matrix;
         this.matrix = this.get_rotate_right();
         if(this.cells_empty())
@@ -55,6 +57,7 @@ class Piece{
         return false;
     }
     rotate_left(){
+        if(this.placed) return;
         let prev_matrix = this.matrix;
         this.matrix = this.get_rotate_left();
         if(this.cells_empty())
@@ -93,6 +96,7 @@ class Piece{
         return true;
     }
     move_rel(x, y){
+        if(this.placed) return;
         this.pos.x += x;
         this.pos.y += y;
         if(this.cells_empty())
@@ -102,6 +106,7 @@ class Piece{
         return false;
     }
     hard_drop(){
+        if(this.placed) return;
         while(this.move_rel(0, 1));
         this.lock();
     }
