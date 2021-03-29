@@ -38,6 +38,7 @@ const _INTERVAL = setInterval(()=>{
         piece = get_random_piece();
     if(!piece.move_rel(0, 1))
         piece.lock();
+    clear_lines();
     draw_board();
     piece.draw_shadow();
     piece.draw();

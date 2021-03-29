@@ -225,3 +225,15 @@ function draw_board(){
         }
     }
 }
+
+function clear_lines(){
+    for(let i = 0; i < BOARD_SIZE.y; i++){
+        if(!board[i].includes(CellType.None)){
+            board.splice(i, 1);
+            let new_row = [];
+            for(let j = 0; j < BOARD_SIZE.x; j++)
+                new_row.push(CellType.None);
+            board.unshift(new_row);
+        }
+    }
+}
