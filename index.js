@@ -21,7 +21,7 @@ document.addEventListener('keydown', event=>{
             piece.rotate_right();
             break
         case 'p':
-            paused = !paused;
+            toggle_pause();
             break;
         case ' ':
             if(!can_hold) break;
@@ -41,6 +41,12 @@ document.addEventListener('keydown', event=>{
     piece.draw();
 });
 
+function toggle_pause(){
+    paused = !paused;
+    pause_menu.classList.toggle('hidden');
+}
+
+const pause_menu = document.querySelector('.pause-menu');
 let piece = get_random_piece();
 let hold = null;
 let can_hold = true;

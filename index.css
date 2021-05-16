@@ -51,6 +51,34 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.hidden{
+    display: none;
+}
+
+.pause-menu{
+    position: absolute;
+    background: rgba(90, 90, 100, 0.8);
+    backdrop-filter: blur(5px);
+    color: #eef;
+    padding: 20px;
+    z-index: 1;
+    text-align: center;
+}
+
+.pause-menu h1{
+    margin: 0;
+    font-size: 3em;
+}
+
+.pause-menu .button{
+    width: 100%;
+}
+
+.button{
+    font-size: 1.2em;
 }
 
 .grid{
