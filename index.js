@@ -22,6 +22,18 @@ document.addEventListener('keydown', event=>{
             break
         case 'p':
             paused = !paused;
+            break;
+        case ' ':
+            if(!can_hold) break;
+            let temp = hold;
+            hold = piece.clone();
+            if(temp === null)
+                piece = get_random_piece();
+            else
+                piece = temp;
+            piece.pos = new Coord(Math.floor(BOARD_SIZE.x / 2 - piece.matrix[0].length / 2), -1);
+            can_hold = false;
+            break;
         default:
             break;
     }
@@ -30,12 +42,16 @@ document.addEventListener('keydown', event=>{
 });
 
 let piece = get_random_piece();
+let hold = null;
+let can_hold = true;
 let paused = false;
 
 const _INTERVAL = setInterval(()=>{
     if(paused) return;
-    if(piece.placed)
+    if(piece.placed){
         piece = get_random_piece();
+        can_hold = true;
+    }
     if(!piece.move_rel(0, 1))
         piece.lock();
     clear_lines();

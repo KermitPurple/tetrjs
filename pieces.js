@@ -4,7 +4,7 @@
 class Piece{
     constructor(matrix){
         this.matrix = matrix;
-        this.pos = new Coord(Math.floor(BOARD_SIZE.x / 2 - matrix[0].length / 2), 0);
+        this.pos = new Coord(Math.floor(BOARD_SIZE.x / 2 - matrix[0].length / 2), -1);
         this.placed = false;
     }
     clone(){
@@ -151,10 +151,10 @@ for(let i = 0; i < BOARD_SIZE.y; i++){
 
 const PIECES = [
     new Piece([
-        [CellType.None, CellType.I, CellType.None, CellType.None],
-        [CellType.None, CellType.I, CellType.None, CellType.None],
-        [CellType.None, CellType.I, CellType.None, CellType.None],
-        [CellType.None, CellType.I, CellType.None, CellType.None],
+        [CellType.None, CellType.None, CellType.None, CellType.None],
+        [CellType.I, CellType.I, CellType.I, CellType.I],
+        [CellType.None, CellType.None, CellType.None, CellType.None],
+        [CellType.None, CellType.None, CellType.None, CellType.None],
     ]),
     new Piece([
         [CellType.O, CellType.O],
