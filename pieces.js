@@ -194,7 +194,6 @@ class GrabBag{
     get_random_piece(){
         if(this.pieces.length <= 0)
             this.pieces = [...PIECES];
-        console.log(this.pieces);
         return this.pieces.splice(Math.floor(Math.random() * this.pieces.length), 1)[0].clone();
     }
 }
