@@ -71,6 +71,8 @@ class Piece{
             for(let j = 0; j < this.matrix[i].length; j++)
                 if(this.matrix[i][j] != CellType.None){
                     let cell = get_cell_at(j + this.pos.x, i + this.pos.y);
+                    if(cell === undefined)
+                        continue;
                     clear_cell(cell);
                     if(shadow)
                         cell.classList.add('shadow');
@@ -85,7 +87,11 @@ class Piece{
         this.placed = true;
         for(let i = 0; i < this.matrix[0].length; i++)
             for(let j = 0; j < this.matrix.length; j++){
-                if(this.matrix[i][j] != CellType.None)
+                if(
+                    this.matrix[i][j] != CellType.None &&
+                    this.pos.x + j >= 0 &&
+                    this.pos.y + i >= 0
+                )
                     board[this.pos.y + i][this.pos.x + j] = this.matrix[i][j];
             }
     }
@@ -203,6 +209,8 @@ function get_random_piece(){
 }
 
 function clear_cell(cell){
+    if(cell === undefined)
+        return;
     for(let key in CellType)
         if(key != 'None')
             cell.classList.remove(CellType[key]);
