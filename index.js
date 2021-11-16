@@ -33,6 +33,7 @@ document.addEventListener('keydown', event=>{
                 piece = temp;
             piece.pos = new Coord(Math.floor(BOARD_SIZE.x / 2 - piece.matrix[0].length / 2), -1);
             can_hold = false;
+            hold.show_in_hold();
             break;
         default:
             break;
@@ -67,6 +68,7 @@ function start_game(){
         piece.draw();
     }, 250);
 }
+
 const pause_menu = document.querySelector('.pause-menu');
 let bag = new GrabBag();
 let piece = bag.get_random_piece();

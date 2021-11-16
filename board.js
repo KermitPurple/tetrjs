@@ -9,7 +9,8 @@ class Coord{
 }
 const BOARD_SIZE = new Coord(10, 20);
 const cells = document.querySelectorAll('.cell');
-
+const HOLD_SIZE = new Coord(4, 4);
+const hold_cells = document.querySelectorAll('.hold-cell');
 
 /*
  * Return a cell in cells with the given coordinates
@@ -18,6 +19,10 @@ const cells = document.querySelectorAll('.cell');
  */
 function get_cell_at(x, y){
     return cells[y * BOARD_SIZE.x + x];
+}
+
+function get_hold_cell_at(x, y){
+    return hold_cells[y * HOLD_SIZE.x + x];
 }
 
 function clone(object){

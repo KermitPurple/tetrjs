@@ -137,6 +137,18 @@ class Piece{
         shadow.hard_drop(true);
         shadow.draw(true);
     }
+    show_in_hold(){
+        clear_hold();
+        let offset = 0;
+        if(this.matrix.length == 2)
+            offset = 1;
+        for(let y = 0; y < this.matrix.length; y++)
+            for(let x = 0; x < this.matrix[y].length; x++){
+                let cell = get_hold_cell_at(x + offset, y + offset)
+                if(this.matrix[y][x] != CellType.None)
+                    cell.classList.add(this.matrix[y][x]);
+            }
+    }
 }
 
 const CellType = {
@@ -259,4 +271,11 @@ function clear_lines(){
             board.unshift(new_row);
         }
     }
+}
+
+function clear_hold(){
+    for(let y = 0; y < HOLD_SIZE.y; y++)
+        for(let x = 0; x < HOLD_SIZE.x; x++)
+            for(let key in CellType)
+                get_hold_cell_at(x, y).classList.remove(key);
 }

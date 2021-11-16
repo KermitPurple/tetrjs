@@ -89,9 +89,26 @@ body{
     grid-template-rows: repeat(20, auto);
 }
 
+.hold-cell,
 .cell{
     position: relative;
     background: #333;
     border: 1px solid #111;
     display: block;
 }
+
+.hold-container{
+    position: absolute;
+    text-align: center;
+    height: 90vh;
+    transform: translate(35vh);
+}
+
+.hold{
+    width: 20vh;
+    height: 20vh;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, auto);
+}
+
