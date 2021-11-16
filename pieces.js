@@ -1,4 +1,4 @@
-// TODO: change get rotate to just rotate and use a decorator for peice protection
+// TODO: change get rotate to just rotate and use a decorator for piece protection
 // TODO: do this for placed protection as well
 // TODO: store board data in a matrix instead of just dom
 class Piece{
@@ -181,11 +181,23 @@ const PIECES = [
         [CellType.None, CellType.Z, CellType.None],
     ]),
     new Piece([
-        [CellType.None, CellType.None, CellType.Z],
-        [CellType.None, CellType.Z, CellType.Z],
-        [CellType.None, CellType.Z, CellType.None],
+        [CellType.None, CellType.None, CellType.None],
+        [CellType.T, CellType.T, CellType.T],
+        [CellType.None, CellType.T, CellType.None],
     ]),
 ];
+
+class GrabBag{
+    constructor(){
+        this.pieces = [...PIECES];
+    }
+    get_random_piece(){
+        if(this.pieces.length <= 0)
+            this.pieces = [...PIECES];
+        console.log(this.pieces);
+        return this.pieces.splice(Math.floor(Math.random() * this.pieces.length), 1)[0].clone();
+    }
+}
 
 function get_random_piece(){
     return PIECES[Math.floor(Math.random() * PIECES.length)].clone();

@@ -28,7 +28,7 @@ document.addEventListener('keydown', event=>{
             let temp = hold;
             hold = piece.clone();
             if(temp === null)
-                piece = get_random_piece();
+                piece = bag.get_random_piece();
             else
                 piece = temp;
             piece.pos = new Coord(Math.floor(BOARD_SIZE.x / 2 - piece.matrix[0].length / 2), -1);
@@ -47,7 +47,8 @@ function toggle_pause(){
 }
 
 const pause_menu = document.querySelector('.pause-menu');
-let piece = get_random_piece();
+let bag = new GrabBag();
+let piece = bag.get_random_piece();
 let hold = null;
 let can_hold = true;
 let paused = false;
@@ -55,7 +56,7 @@ let paused = false;
 const _INTERVAL = setInterval(()=>{
     if(paused) return;
     if(piece.placed){
-        piece = get_random_piece();
+        piece = bag.get_random_piece();
         can_hold = true;
     }
     if(!piece.move_rel(0, 1))
