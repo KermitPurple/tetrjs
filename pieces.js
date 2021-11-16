@@ -91,9 +91,13 @@ class Piece{
                     this.matrix[i][j] != CellType.None &&
                     this.pos.x + j >= 0 &&
                     this.pos.y + i >= 0
-                )
+                ){
+                    if(board[this.pos.y + i][this.pos.x + j] != CellType.None)
+                        return false;
                     board[this.pos.y + i][this.pos.x + j] = this.matrix[i][j];
+                }
             }
+        return true;
     }
     cells_empty(){
         for(let i = 0; i < this.matrix.length; i++)

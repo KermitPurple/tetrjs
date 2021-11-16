@@ -46,23 +46,33 @@ function toggle_pause(){
     pause_menu.classList.toggle('hidden');
 }
 
+function end_game(){
+    clearInterval(interval);
+    console.log('GAME OVER');
+}
+
+function start_game(){
+    interval = setInterval(()=>{
+        if(paused) return;
+        if(piece.placed){
+            piece = bag.get_random_piece();
+            can_hold = true;
+        }
+        if(!piece.move_rel(0, 1))
+            if(!piece.lock()) // if peice is already in that spot
+                end_game();
+        clear_lines();
+        draw_board();
+        piece.draw_shadow();
+        piece.draw();
+    }, 250);
+}
 const pause_menu = document.querySelector('.pause-menu');
 let bag = new GrabBag();
 let piece = bag.get_random_piece();
 let hold = null;
 let can_hold = true;
 let paused = false;
+let interval = undefined;
 
-const _INTERVAL = setInterval(()=>{
-    if(paused) return;
-    if(piece.placed){
-        piece = bag.get_random_piece();
-        can_hold = true;
-    }
-    if(!piece.move_rel(0, 1))
-        piece.lock();
-    clear_lines();
-    draw_board();
-    piece.draw_shadow();
-    piece.draw();
-}, 250);
+start_game();
