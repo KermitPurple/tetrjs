@@ -244,6 +244,9 @@ function clear_all(){
     for(let x = 0; x < BOARD_SIZE.x; x++)
         for(let y = 0; y < BOARD_SIZE.y; y++)
             clear_cell_at(x, y);
+    for(let row of board)
+        for(let i = 0; i < row.length; i++)
+            row[i] = CellType.None;
     piece = null;
 }
 
