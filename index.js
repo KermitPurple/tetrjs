@@ -48,14 +48,20 @@ function toggle_pause(){
 }
 
 function end_game(){
+    if(paused)
+        toggle_pause();
     clearInterval(interval);
-    console.log('GAME OVER');
+    setTimeout(()=>{
+        clear_all();
+        main_menu.classList.remove('hidden');
+    }, 250);
 }
 
 function start_game(){
+    main_menu.classList.add('hidden');
     interval = setInterval(()=>{
         if(paused) return;
-        if(piece.placed){
+        if(piece == null || piece.placed){
             piece = bag.get_random_piece();
             can_hold = true;
         }
@@ -70,11 +76,12 @@ function start_game(){
 }
 
 const pause_menu = document.querySelector('.pause-menu');
+const main_menu = document.querySelector('.main-menu');
 let bag = new GrabBag();
-let piece = bag.get_random_piece();
+let piece = null;
 let hold = null;
 let can_hold = true;
 let paused = false;
 let interval = undefined;
 
-start_game();
+// start_game();

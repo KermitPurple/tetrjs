@@ -9,9 +9,14 @@
         <script src="index.js" defer></script>
     </head>
     <body>
-        <div class="pause-menu hidden">
+        <div class="menu pause-menu hidden">
             <h1>Paused</h1>
             <button class="button" onclick="toggle_pause()">Resume</button>
+            <button class="button" onclick="end_game()">Exit</button>
+        </div>
+        <div class="menu main-menu">
+            <h1>JS Tetris</h1>
+            <button class="button" onclick="start_game()">Play</button>
         </div>
         <div class=grid>
             <div class=cell></div>

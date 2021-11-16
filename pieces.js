@@ -237,6 +237,16 @@ function clear_cell_at(x, y){
     clear_cell(get_cell_at(x, y));
 }
 
+
+function clear_all(){
+    clear_hold();
+    hold = null;
+    for(let x = 0; x < BOARD_SIZE.x; x++)
+        for(let y = 0; y < BOARD_SIZE.y; y++)
+            clear_cell_at(x, y);
+    piece = null;
+}
+
 function cell_empty(cell){
     if(cell.classList.contains('shadow'))
         return true;
