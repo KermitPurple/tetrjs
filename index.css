@@ -45,6 +45,7 @@ html, body{
     padding: 0;
     width: 100%;
     height: 100%;
+    font-family: 'VT323';
 }
 
 body{
@@ -78,6 +79,7 @@ body{
 }
 
 .button{
+    font-family: 'VT323';
     font-size: 1.2em;
 }
 
