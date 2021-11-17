@@ -118,4 +118,14 @@ body{
     grid-template-rows: repeat(4, auto);
 }
 
+.controls h2{
+    --margin-top-bottom: 1.5vh;
+    margin-top: var(--margin-top-bottom);
+    margin-bottom: var(--margin-top-bottom);
+}
 
+.controls p{
+    --margin-top-bottom: .9vh;
+    margin-top: var(--margin-top-bottom);
+    margin-bottom: var(--margin-top-bottom);
+}
