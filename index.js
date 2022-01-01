@@ -3,28 +3,35 @@ document.addEventListener('keydown', event=>{
     piece.erase_shadow();
     switch(event.key.toLowerCase()){
         case 'w':
-            piece.hard_drop();
+            if(!paused)
+                piece.hard_drop();
             break;
         case 'a':
-            piece.move_rel(-1, 0);
+            if(!paused)
+                piece.move_rel(-1, 0);
             break;
         case 's':
-            piece.move_rel(0, 1);
+            if(!paused)
+                piece.move_rel(0, 1);
             break;
         case 'd':
-            piece.move_rel(1, 0);
+            if(!paused)
+                piece.move_rel(1, 0);
             break;
         case 'q':
-            piece.rotate_left();
+            if(!paused)
+                piece.rotate_left();
             break;
         case 'e':
-            piece.rotate_right();
+            if(!paused)
+                piece.rotate_right();
             break
         case 'p':
-            toggle_pause();
+            if(!paused)
+                toggle_pause();
             break;
         case ' ':
-            if(!can_hold) break;
+            if(!can_hold || paused) break;
             let temp = hold;
             hold = piece.clone();
             if(temp === null)
