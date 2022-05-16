@@ -2,6 +2,14 @@
 // TODO: do this for placed protection as well
 // TODO: store board data in a matrix instead of just dom
 class Piece{
+    positions = [
+        new Coord(0, 1),
+        new Coord(-1, 1),
+        new Coord(1, 1),
+        new Coord(-1, 0),
+        new Coord(1, 0),
+    ]
+
     constructor(matrix){
         this.matrix = matrix;
         this.pos = new Coord(Math.floor(BOARD_SIZE.x / 2 - matrix[0].length / 2), -1);
@@ -9,6 +17,19 @@ class Piece{
     }
     clone(){
         return clone(this);
+    }
+    try_positions(positions){
+        positions ??= this.positions;
+        console.log(positions);
+        for(let pos of positions){
+            this.pos.x += pos.x;
+            this.pos.y += pos.y;
+            if(this.cells_empty())
+                return true;
+            this.pos.x -= pos.x;
+            this.pos.y -= pos.y;
+        }
+        return false;
     }
     /*
      * +--+--+--+     +--+--+--+
@@ -52,7 +73,7 @@ class Piece{
         if(this.placed) return;
         let prev_matrix = this.matrix;
         this.matrix = this.get_rotate_right();
-        if(this.cells_empty())
+        if(this.cells_empty() || this.try_positions())
             return true;
         this.matrix = prev_matrix;
         return false;
@@ -61,7 +82,7 @@ class Piece{
         if(this.placed) return;
         let prev_matrix = this.matrix;
         this.matrix = this.get_rotate_left();
-        if(this.cells_empty())
+        if(this.cells_empty() || this.try_positions())
             return true;
         this.matrix = prev_matrix;
         return false;
