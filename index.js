@@ -27,8 +27,7 @@ document.addEventListener('keydown', event=>{
                 piece.rotate_right();
             break
         case 'p':
-            if(!paused)
-                toggle_pause();
+            toggle_pause();
             break;
         case ' ':
             if(!can_hold || paused) break;
