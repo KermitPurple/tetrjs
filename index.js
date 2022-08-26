@@ -14,7 +14,13 @@ let interval = null;
 let score = 0;
 let lines_cleared = 0;
 
-document.querySelectorAll('.key-entry').forEach(entry => keys[entry.name] = entry.value);
+document.querySelectorAll('.key-entry').forEach(entry => {
+    let cookie = get_cookie(entry.name);
+    if(cookie !== null){
+        entry.value = cookie;
+    }
+    keys[entry.name] = entry.value;
+});
 
 document.addEventListener('keydown', event=>{
     piece.erase()
@@ -89,6 +95,11 @@ function update_lines_cleared(){
 
 function update_score(){
     els.score.innerHTML = score;
+}
+
+function set_key(name, value){
+    set_cookie(name, value);
+    keys[name] = value;
 }
 
 function start_game(){
