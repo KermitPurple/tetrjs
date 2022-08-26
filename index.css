@@ -99,14 +99,14 @@ body{
     display: block;
 }
 
-.hold-container{
+.rhs-container{
     position: absolute;
     text-align: center;
     height: 90vh;
     transform: translate(35vh);
 }
 
-.hold-container h1{
+.rhs-container h1{
     margin-bottom: 1vh;
 }
 
@@ -116,6 +116,11 @@ body{
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-template-rows: repeat(4, auto);
+}
+
+.pause-button{
+    margin: 1rem;
+    font-size: 2em;
 }
 
 .controls-header{
