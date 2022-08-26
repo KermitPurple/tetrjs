@@ -39,7 +39,6 @@
 .shadow{
     filter: brightness(30%);
 }
-
 html, body{
     margin: 0;
     padding: 0;
@@ -104,6 +103,16 @@ body{
     text-align: center;
     height: 90vh;
     transform: translate(35vh);
+}
+
+.rhs-container p{
+    font-size: 1.6rem;
+    --margin: 1vh;
+    margin-top: var(--margin);
+    margin-bottom: var(--margin);
+    margin-left: var(--margin);
+    text-align: left;
+
 }
 
 .rhs-container h1{

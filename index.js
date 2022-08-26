@@ -77,7 +77,6 @@ function end_game(){
     if(paused)
         toggle_pause();
     clearInterval(interval);
-    interval = null;
     setTimeout(()=>{
         clear_all();
         els.main_menu.classList.remove('hidden');

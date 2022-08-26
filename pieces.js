@@ -269,6 +269,11 @@ function clear_all(){
         for(let i = 0; i < row.length; i++)
             row[i] = CellType.None;
     piece = null;
+    score = 0;
+    lines_cleared = 0;
+    interval = null;
+    update_score();
+    update_lines_cleared();
 }
 
 function cell_empty(cell){
