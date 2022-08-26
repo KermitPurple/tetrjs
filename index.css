@@ -128,4 +128,10 @@ body{
     --margin-top-bottom: .9vh;
     margin-top: var(--margin-top-bottom);
     margin-bottom: var(--margin-top-bottom);
+    margin-left: 25%;
+    text-align: left;
+}
+
+.key-entry {
+    width: 10%;
 }

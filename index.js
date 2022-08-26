@@ -1,35 +1,48 @@
+const pause_menu = document.querySelector('.pause-menu');
+const main_menu = document.querySelector('.main-menu');
+const keys = {};
+let bag = new GrabBag();
+let piece = null;
+let hold = null;
+let can_hold = true;
+let paused = false;
+let interval = undefined;
+
+document.querySelectorAll('.key-entry').forEach(entry => keys[entry.name] = entry.value);
+
 document.addEventListener('keydown', event=>{
     piece.erase()
     piece.erase_shadow();
     switch(event.key.toLowerCase()){
-        case 'w':
+        case keys.hard_drop:
             if(!paused)
                 piece.hard_drop();
             break;
-        case 'a':
+        case keys.left:
             if(!paused)
                 piece.move_rel(-1, 0);
             break;
-        case 's':
+        case keys.soft_drop:
             if(!paused)
                 piece.move_rel(0, 1);
             break;
-        case 'd':
+        case keys.right:
             if(!paused)
                 piece.move_rel(1, 0);
             break;
-        case 'q':
+        case keys.rotate_left:
             if(!paused)
                 piece.rotate_left();
             break;
-        case 'e':
+        case keys.rotate_right:
             if(!paused)
                 piece.rotate_right();
             break
-        case 'p':
-            toggle_pause();
+        case keys.pause:
+            if(!paused)
+                toggle_pause();
             break;
-        case ' ':
+        case keys.swap:
             if(!can_hold || paused) break;
             let temp = hold;
             hold = piece.clone();
@@ -80,14 +93,3 @@ function start_game(){
         piece.draw();
     }, 250);
 }
-
-const pause_menu = document.querySelector('.pause-menu');
-const main_menu = document.querySelector('.main-menu');
-let bag = new GrabBag();
-let piece = null;
-let hold = null;
-let can_hold = true;
-let paused = false;
-let interval = undefined;
-
-// start_game();
