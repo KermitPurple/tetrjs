@@ -296,8 +296,10 @@ function draw_board(){
 }
 
 function clear_lines(){
+    let lines = 0;
     for(let i = 0; i < BOARD_SIZE.y; i++){
         if(!board[i].includes(CellType.None)){
+            lines += 1;
             board.splice(i, 1);
             let new_row = [];
             for(let j = 0; j < BOARD_SIZE.x; j++)
@@ -305,6 +307,13 @@ function clear_lines(){
             board.unshift(new_row);
         }
     }
+    if(lines <= 0){
+        return;
+    }
+    score += 100 * 4 ** (lines - 1)
+    lines_cleared += lines;
+    update_score();
+    update_lines_cleared();
 }
 
 function clear_hold(){

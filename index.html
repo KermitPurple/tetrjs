@@ -22,8 +22,8 @@
                 <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="hard_drop" id="hard-drop-key" value="w"><p> - Hard drop</p>
                 <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="soft_drop" id="soft-drop-key" value="s"><p> - Soft drop</p>
                 <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="right" id="right-key" value="d"><p> - Move right</p>
-                <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="rotate_right" id="rotate-right-key" value="q"><p> - Rotate left</p>
-                <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="rotate_left" id="rotate-left-key" value="e"><p> - Rotate Right</p>
+                <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="rotate_left" id="rotate-left-key" value="q"><p> - Rotate Left</p>
+                <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="rotate_right" id="rotate-right-key" value="e"><p> - Rotate Right</p>
                 <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="swap" id="swap-key" value=" "><p> - Swap hold</p>
                 <input type="text" onchange="keys[this.name] = this.value" class="key-entry" name="pause" id="pause-key" value="p"><p> - Pause</p>
             </div>
@@ -235,6 +235,8 @@
             <div class=cell></div>
         </div>
         <div class=rhs-container>
+            <p>Score: <span id=score-value>0</span></p>
+            <p>Lines Cleared: <span id=lines-value>0</span></p>
             <h1>Hold</h1>
             <div class=hold>
                 <div class=hold-cell></div>

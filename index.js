@@ -1,5 +1,9 @@
-const pause_menu = document.querySelector('.pause-menu');
-const main_menu = document.querySelector('.main-menu');
+const els = {
+    pause_menu: document.querySelector('.pause-menu'),
+    main_menu: document.querySelector('.main-menu'),
+    score: document.querySelector('#score-value'),
+    lines_cleared:document.querySelector('#lines-value'),
+};
 const keys = {};
 let bag = new GrabBag();
 let piece = null;
@@ -7,6 +11,8 @@ let hold = null;
 let can_hold = true;
 let paused = false;
 let interval = undefined;
+let score = 0;
+let lines_cleared = 0;
 
 document.querySelectorAll('.key-entry').forEach(entry => keys[entry.name] = entry.value);
 
@@ -63,7 +69,7 @@ document.addEventListener('keydown', event=>{
 
 function toggle_pause(){
     paused = !paused;
-    pause_menu.classList.toggle('hidden');
+    els.pause_menu.classList.toggle('hidden');
 }
 
 function end_game(){
@@ -72,12 +78,20 @@ function end_game(){
     clearInterval(interval);
     setTimeout(()=>{
         clear_all();
-        main_menu.classList.remove('hidden');
+        els.main_menu.classList.remove('hidden');
     }, 250);
 }
 
+function update_lines_cleared(){
+    els.lines_cleared.innerHTML = lines_cleared;
+}
+
+function update_score(){
+    els.score.innerHTML = score;
+}
+
 function start_game(){
-    main_menu.classList.add('hidden');
+    els.main_menu.classList.add('hidden');
     interval = setInterval(()=>{
         if(paused) return;
         if(piece == null || piece.placed){
