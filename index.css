@@ -118,20 +118,28 @@ body{
     grid-template-rows: repeat(4, auto);
 }
 
-.controls h2{
+.controls-header{
     --margin-top-bottom: 1.5vh;
     margin-top: var(--margin-top-bottom);
     margin-bottom: var(--margin-top-bottom);
 }
 
 .controls p{
-    --margin-top-bottom: .9vh;
-    margin-top: var(--margin-top-bottom);
-    margin-bottom: var(--margin-top-bottom);
-    margin-left: 25%;
+    margin: .9vh;
     text-align: left;
+    display: inline;
 }
 
-.key-entry {
-    width: 10%;
+.controls{
+    display: grid;
+    width: auto;
+    grid-template-columns: auto auto;
+}
+
+.key-entry{
+    display: inline;
+    width: 1.1rem;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: 'VT323';
 }
