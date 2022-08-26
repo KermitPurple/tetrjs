@@ -10,7 +10,7 @@ let piece = null;
 let hold = null;
 let can_hold = true;
 let paused = false;
-let interval = undefined;
+let interval = null;
 let score = 0;
 let lines_cleared = 0;
 
@@ -68,6 +68,7 @@ document.addEventListener('keydown', event=>{
 });
 
 function toggle_pause(){
+    if(interval === null) return;
     paused = !paused;
     els.pause_menu.classList.toggle('hidden');
 }
@@ -76,6 +77,7 @@ function end_game(){
     if(paused)
         toggle_pause();
     clearInterval(interval);
+    interval = null;
     setTimeout(()=>{
         clear_all();
         els.main_menu.classList.remove('hidden');
